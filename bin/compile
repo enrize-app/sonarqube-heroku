@@ -23,21 +23,24 @@ if [ ! -d ${CACHE_DIR} ]; then
 fi
 
 install_jdk() {
-  local install_dir=${1}
-  local CACHE_DIR=${2}
+    local install_dir=${1}
+    local CACHE_DIR=${2}
 
-  JVM_COMMON_BUILDPACK=${JVM_COMMON_BUILDPACK:-https://buildpack-registry.s3.amazonaws.com/buildpacks/heroku/jvm.tgz}
-  JVM_COMMON="jvm.tgz"
-  if [ ! -f ${CACHE_DIR}/${JVM_COMMON} ]; then
-    curl --retry 3 --silent --location $JVM_COMMON_BUILDPACK > ${CACHE_DIR}/${JVM_COMMON}
-  fi
-  mkdir -p /tmp/jvm-common  
-  tar xzmf ${CACHE_DIR}/${JVM_COMMON} -C /tmp/jvm-common --strip-components=1
-  source /tmp/jvm-common/bin/util
-  source /tmp/jvm-common/bin/java
- # source /tmp/jvm-common/opt/jdbc.sh
+    echo "--> Set jdk11"
+    cp ${BP_DIR}/opt/system.properties ${install_dir}
 
-  install_java_with_overlay ${install_dir}
+    JVM_COMMON_BUILDPACK=${JVM_COMMON_BUILDPACK:-https://buildpack-registry.s3.amazonaws.com/buildpacks/heroku/jvm.tgz}
+    JVM_COMMON="jvm.tgz"
+    if [ ! -f ${CACHE_DIR}/${JVM_COMMON} ]; then
+        curl --retry 3 --silent --location $JVM_COMMON_BUILDPACK > ${CACHE_DIR}/${JVM_COMMON}
+    fi
+    mkdir -p /tmp/jvm-common  
+    tar xzmf ${CACHE_DIR}/${JVM_COMMON} -C /tmp/jvm-common --strip-components=1
+    source /tmp/jvm-common/bin/util
+    source /tmp/jvm-common/bin/java
+    # source /tmp/jvm-common/opt/jdbc.sh
+
+    install_java_with_overlay ${install_dir}
 }
 
 install_sonarqube() {
