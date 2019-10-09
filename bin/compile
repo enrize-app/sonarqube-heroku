@@ -89,6 +89,8 @@ install_sonarphp_plugin() {
     SONARPHP_URL="https://binaries.sonarsource.com/Distribution/sonar-php-plugin/${SONARPHP_JAR}"
 
     echo -n "----> Downloading SONAR PHP..."
+    curl --silent --location ${SONARPHP_URL} > ${CACHE_DIR}/${SONARPHP_JAR}
+    echo "done"
 
     cp ${CACHE_DIR}/${SONARPHP_JAR} ${SONAR_HOME}/extensions/plugins/${SONARPHP_JAR}
     chmod +rwx ${SONAR_HOME}/extensions/plugins/${SONARPHP_JAR}
@@ -103,7 +105,9 @@ install_sonarjs_plugin() {
     SONARJS_URL="https://binaries.sonarsource.com/Distribution/sonar-javascript-plugin/${SONARJS_JAR}"
 
     echo -n "----> Downloading SONAR JS..."
-
+    curl --silent --location ${SONARJS_URL} > ${CACHE_DIR}/${SONARJS_JAR}
+    echo "done"
+    
     cp ${CACHE_DIR}/${SONARJS_JAR} ${SONAR_HOME}/extensions/plugins/${SONARJS_JAR}
     chmod +rwx ${SONAR_HOME}/extensions/plugins/${SONARJS_JAR}
     echo " done"
@@ -117,6 +121,8 @@ install_sonarhtml_plugin() {
     SONARHTML_URL="https://binaries.sonarsource.com/Distribution/sonar-html-plugin/${SONARHTML_JAR}"
 
     echo -n "----> Downloading SONAR PHP..."
+    curl --silent --location ${SONARHTML_URL} > ${CACHE_DIR}/${SONARHTML_JAR}
+    echo "done"
 
     cp ${CACHE_DIR}/${SONARHTML_JAR} ${SONAR_HOME}/extensions/plugins/${SONARHTML_JAR}
     chmod +rwx ${SONAR_HOME}/extensions/plugins/${SONARHTML_JAR}
@@ -131,6 +137,8 @@ install_sonarcss_plugin() {
     SONARCSS_URL="https://binaries.sonarsource.com/Distribution/sonar-css-plugin/${SONARCSS_JAR}"
 
     echo -n "----> Downloading SONAR CSS..."
+    curl --silent --location ${SONARCSS_URL} > ${CACHE_DIR}/${SONARCSS_JAR}
+    echo "done"
 
     cp ${CACHE_DIR}/${SONARCSS_JAR} ${SONAR_HOME}/extensions/plugins/${SONARCSS_JAR}
     chmod +rwx ${SONAR_HOME}/extensions/plugins/${SONARCSS_JAR}
