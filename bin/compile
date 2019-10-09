@@ -26,8 +26,8 @@ install_jdk() {
   local install_dir=${1}
   local CACHE_DIR=${2}
 
-  JVM_COMMON_BUILDPACK=${JVM_COMMON_BUILDPACK:-https://codon-buildpacks.s3.amazonaws.com/buildpacks/heroku/jvm-common.tgz}
-  JVM_COMMON="jvm-common.tgz"
+  JVM_COMMON_BUILDPACK=${JVM_COMMON_BUILDPACK:-https://buildpack-registry.s3.amazonaws.com/buildpacks/heroku/jvm.tgz}
+  JVM_COMMON="jvm.tgz"
   if [ ! -f ${CACHE_DIR}/${JVM_COMMON} ]; then
     curl --retry 3 --silent --location $JVM_COMMON_BUILDPACK > ${CACHE_DIR}/${JVM_COMMON}
   fi
@@ -35,7 +35,7 @@ install_jdk() {
   tar xzmf ${CACHE_DIR}/${JVM_COMMON} -C /tmp/jvm-common --strip-components=1
   source /tmp/jvm-common/bin/util
   source /tmp/jvm-common/bin/java
-  source /tmp/jvm-common/opt/jdbc.sh
+ # source /tmp/jvm-common/opt/jdbc.sh
 
   install_java_with_overlay ${install_dir}
 }
@@ -54,7 +54,6 @@ install_sonarqube() {
     curl --location ${SONAR_URL} > ${CACHE_DIR}/${SONAR_DIST_ZIP}
     echo " done"
   fi
-
 
   echo -n "-----> Installing ${SONAR_DIST}...."
 
