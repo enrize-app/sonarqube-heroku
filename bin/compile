@@ -38,7 +38,7 @@ install_jdk() {
     tar xzmf ${CACHE_DIR}/${JVM_COMMON} -C /tmp/jvm-common --strip-components=1
     source /tmp/jvm-common/bin/util
     source /tmp/jvm-common/bin/java
-    # source /tmp/jvm-common/opt/jdbc.sh
+    source /tmp/jvm-common/opt/jdbc.sh
 
     echo "-----> ADDING JAVA TO PATH"
 
