@@ -40,10 +40,7 @@ install_jdk() {
     source /tmp/jvm-common/bin/java
     source /tmp/jvm-common/opt/jdbc.sh
 
-    echo "-----> ADDING JAVA TO PATH"
-
-    export JAVA_HOME="/app/.jdk/"
-    export PATH=$JAVA_HOME/bin:$PATH
+    echo "----> JAVA SETUP READY"
 
     install_java_with_overlay ${install_dir}
 }
