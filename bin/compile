@@ -66,7 +66,7 @@ install_sonarqube() {
   mv ${BUILD_DIR}/${SONAR_DIST} ${SONAR_HOME}
 
   # Copy vendored properties into Sonar
-  cp ${BP_DIR}/etc/sonar.properties ${SONAR_HOME}/conf
+  # cp ${BP_DIR}/etc/sonar.properties ${SONAR_HOME}/conf
   # cp ${BP_DIR}/etc/wrapper.conf ${SONAR_HOME}/conf
 
   #make wrapper writable
