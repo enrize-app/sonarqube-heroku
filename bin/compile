@@ -26,7 +26,7 @@ install_jdk() {
     local install_dir=${1}
     local CACHE_DIR=${2}
 
-    echo "--> Set jdk11"
+    echo "--> Set jdk12"
     cp ${BP_DIR}/opt/system.properties ${install_dir}
 
     JVM_COMMON_BUILDPACK=${JVM_COMMON_BUILDPACK:-https://buildpack-registry.s3.amazonaws.com/buildpacks/heroku/jvm.tgz}
@@ -39,6 +39,11 @@ install_jdk() {
     source /tmp/jvm-common/bin/util
     source /tmp/jvm-common/bin/java
     # source /tmp/jvm-common/opt/jdbc.sh
+
+    echo "-----> ADDING JAVA TO PATH"
+
+    export JAVA_HOME="/app/.jdk/"
+    export PATH=$JAVA_HOME/bin:$PATH
 
     install_java_with_overlay ${install_dir}
 }
