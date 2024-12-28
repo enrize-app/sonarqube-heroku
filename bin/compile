@@ -69,6 +69,7 @@ install_sonarqube() {
 
   #make wrapper writable
   #chmod +x $SONAR_HOME/bin/linux-x86-64/./wrapper $SONAR_HOME/bin/linux-x86-64/sonar.sh
+  chmod +x $SONAR_HOME/bin/linux-x86-64/sonar.sh
 
   # Copy the vendored boot script for launching the WAR
   cp ${BP_DIR}/opt/boot.sh ${SONAR_HOME}/
