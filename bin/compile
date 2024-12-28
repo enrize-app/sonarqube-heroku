@@ -87,8 +87,8 @@ install_sonarts_plugin() {
   local BUILD_DIR=${1}
   local CACHE_DIR=${2}
   
-  SONARTS_DIST_JAR="sonar-typescript-plugin-1.6.0.2388.jar"
-  SONARTS_URL="https://sonarsource.bintray.com/Distribution/sonar-typescript-plugin/${SONARTS_DIST_JAR}"
+  SONARTS_DIST_JAR="sonar-typescript-plugin-2.1.0.4359.jar"
+  SONARTS_URL="https://binaries.sonarsource.com/?prefix=Distribution/sonar-typescript-plugin/${SONARTS_DIST_JAR}"
 
   echo -n "-----> Downloading SonarTS....."
   curl --silent --location ${SONARTS_URL} > ${CACHE_DIR}/${SONARTS_DIST_JAR}
@@ -104,8 +104,8 @@ install_nodejs() {
   local BUILD_DIR=${1}
   local CACHE_DIR=${2}
 
-  NODE_DIST_FILE="node-v8.10.0-linux-x64.tar.xz"
-  NODE_DIST_URL="https://nodejs.org/dist/v8.10.0/${NODE_DIST_FILE}"
+  NODE_DIST_FILE="node-v18.9.1-linux-x64.tar.xz"
+  NODE_DIST_URL="https://nodejs.org/dist/v18.9.1/${NODE_DIST_FILE}"
 
   if [ ! -f ${CACHE_DIR}/${NODE_DIST_FILE} ]; then
     echo -n "-----> Downloading NodeJS....."
