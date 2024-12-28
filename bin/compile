@@ -129,6 +129,6 @@ install_nodejs() {
 install_jdk ${BUILD_DIR} ${CACHE_DIR}
 install_nodejs ${BUILD_DIR} ${CACHE_DIR}
 install_sonarqube ${BUILD_DIR} ${CACHE_DIR}
-install_sonarts_plugin ${BUILD_DIR} ${CACHE_DIR}
+# install_sonarts_plugin ${BUILD_DIR} ${CACHE_DIR}
 
 
